@@ -56,6 +56,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchedResultCellIdentifier, for: indexPath) as! SearchedResultCell
         let model = searchedItems[indexPath.row]
+        cell.searchedResult = model
         return cell
     }
     
