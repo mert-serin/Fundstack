@@ -18,7 +18,11 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         searchController.fetchItems(for: "") { (isSuccess, result, error) in
-            
+            if isSuccess{
+                print(result)
+            }else{
+                
+            }
         }
     }
     
