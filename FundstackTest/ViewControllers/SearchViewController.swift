@@ -72,8 +72,11 @@ class SearchViewController: UIViewController {
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         guard let searchedText = sender.text, searchedText != "" else{
+            self.isSearchActive = false
             return
         }
+        
+        self.isSearchActive = searchedText.count != 0
         
         searchController.fetchItems(for: searchedText) { (isSuccess, result, error) in
             if isSuccess{
