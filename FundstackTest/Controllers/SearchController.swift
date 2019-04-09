@@ -30,13 +30,13 @@ class SearchController: SearchControllerProtocol {
     }
     
     func fetchItems(for query: String, _ completionBlock: @escaping FetchSearchResultCompletionBlock) {
-        loadItems(for: query, completion: completionBlock)
+        loadItemsFromAPI(for: query, completion: completionBlock)
     }
 }
 
 private extension SearchController {
     
-    func loadItems(for query: String, completion: @escaping FetchSearchResultCompletionBlock) {
+    func loadItemsFromAPI(for query: String, completion: @escaping FetchSearchResultCompletionBlock) {
         let urlString = String(format: "https://autocomplete.clearbit.com/v1/companies/suggest?query=test")
         guard let url = URL(string: urlString) else {
             completion(false, nil, nil)

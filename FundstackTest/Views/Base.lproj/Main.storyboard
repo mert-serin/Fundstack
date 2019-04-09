@@ -13,7 +13,7 @@
         <!--Search View Controller-->
         <scene sceneID="NKv-NO-bnx">
             <objects>
-                <viewController id="uBo-G7-c1U" customClass="SearchViewController" customModule="FundstackTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uBo-G7-c1U" customClass="SearchViewController" customModule="FundstackTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4vr-VY-8JQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

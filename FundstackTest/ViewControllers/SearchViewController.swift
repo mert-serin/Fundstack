@@ -11,27 +11,22 @@ import CoreData
 
 class SearchViewController: UIViewController {
     
-    public static func create(persistentContainer: NSPersistentContainer) -> SearchViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        return searchViewController
-    }
+    //MARK: Private Variables
+    private var searchController: SearchControllerProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        searchController.fetchItems(for: "") { (isSuccess, result, error) in
+            
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    public static func create(persistentContainer: NSPersistentContainer) -> SearchViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        searchViewController.searchController = SearchController(persistentContainer: persistentContainer)
+        return searchViewController
     }
-    */
 
 }
