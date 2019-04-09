@@ -18,6 +18,13 @@ class SearchedResultCell: UICollectionViewCell {
         }
     }
     
+    typealias OnElementSelected = ((SearchResult) -> Void)
+    var onElementSelected: OnElementSelected!
+    
+    @IBAction func itemSelectedAction(_ sender: UIButton) {
+        onElementSelected(searchedResult)
+    }
+    
     override func prepareForReuse() {
         companyNameLabel.text = nil
     }

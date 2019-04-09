@@ -10,7 +10,11 @@ import UIKit
 
 class SearchResultDetailViewController: UIViewController {
 
+    //MARK: Outletes
     @IBOutlet weak var companyLogoImageView: UIImageView!
+    
+    //MARK: Variables
+    var searchedResult:SearchResult!
     
     override func viewDidLoad() {
         super.viewDidLoad()

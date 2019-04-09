@@ -63,15 +63,25 @@
                                                                 <constraint firstAttribute="height" constant="1" id="Q5s-uC-ioS"/>
                                                             </constraints>
                                                         </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyn-m7-C0h">
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                            <connections>
+                                                                <action selector="itemSelectedAction:" destination="pDe-2Q-k5r" eventType="touchUpInside" id="QCK-ey-h40"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="FSF-Gb-ymB" secondAttribute="bottom" id="2xz-Cc-gdV"/>
+                                                    <constraint firstItem="gyn-m7-C0h" firstAttribute="top" secondItem="pDe-2Q-k5r" secondAttribute="top" id="L3G-rw-bCR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="gyn-m7-C0h" secondAttribute="trailing" id="MLS-Je-kX2"/>
                                                     <constraint firstAttribute="trailing" secondItem="FSF-Gb-ymB" secondAttribute="trailing" id="djy-aW-TgM"/>
                                                     <constraint firstAttribute="trailing" secondItem="UdH-4g-MA8" secondAttribute="trailing" id="gpv-Ya-dAg"/>
+                                                    <constraint firstItem="gyn-m7-C0h" firstAttribute="leading" secondItem="pDe-2Q-k5r" secondAttribute="leading" id="hsW-u7-uOZ"/>
                                                     <constraint firstItem="FSF-Gb-ymB" firstAttribute="leading" secondItem="pDe-2Q-k5r" secondAttribute="leading" id="mRK-Tt-CmR"/>
                                                     <constraint firstItem="UdH-4g-MA8" firstAttribute="leading" secondItem="pDe-2Q-k5r" secondAttribute="leading" id="ncQ-c8-0T0"/>
                                                     <constraint firstItem="UdH-4g-MA8" firstAttribute="centerY" secondItem="pDe-2Q-k5r" secondAttribute="centerY" id="oHb-fd-dz1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gyn-m7-C0h" secondAttribute="bottom" id="zwv-jw-8pc"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="companyNameLabel" destination="UdH-4g-MA8" id="mHC-iH-9ga"/>

@@ -22,11 +22,27 @@ class SearchViewController: UIViewController {
             collectionView.reloadData()
         }
     }
+    
+    //MARK: Segues
+    private var searchResultDetailSegue = "SearchResultDetailSegue"
+    
+    //MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == searchResultDetailSegue{
+            if let searchResultDetailViewController = segue.destination as? SearchResultDetailViewController,
+                let searchResult = sender as? SearchResult {
+                searchResultDetailViewController.searchedResult = searchResult
+            }
+        }
+    }
+    
+    
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         guard let searchedText = sender.text, searchedText != "" else{
@@ -57,6 +73,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchedResultCellIdentifier, for: indexPath) as! SearchedResultCell
         let model = searchedItems[indexPath.row]
         cell.searchedResult = model
+        cell.onElementSelected = { (model) -> Void in
+            self.performSegue(withIdentifier: self.searchResultDetailSegue, sender: model)
+        }
         return cell
     }
     
