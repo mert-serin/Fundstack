@@ -30,7 +30,7 @@ class SearchController: SearchControllerProtocol {
     }
     
     func fetchItems(for query: String, _ completionBlock: @escaping FetchSearchResultCompletionBlock) {
-        loadItemsFromAPI(for: query, completion: completionBlock)
+        fetchFromStorageOrAPI(for: query, completion: completionBlock)
     }
 }
 
@@ -54,6 +54,23 @@ private extension SearchController {
         } catch let error {
             print(error)
             return (nil, false)
+        }
+    }
+    
+    func fetchFromStorageOrAPI(for query: String, completion: @escaping FetchSearchResultCompletionBlock){
+        let managedObjectContext = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<SearchResult>(entityName: SearchController.entityName)
+        let predicate = NSPredicate(format: "query == %@", query)
+        fetchRequest.predicate = predicate
+        do {
+            let users = try managedObjectContext.fetch(fetchRequest)
+            if users.isEmpty{
+                loadItemsFromAPI(for: query, completion: completion)
+            }else{
+                completion(true, users, nil)
+            }
+        } catch let error {
+            print(error)
         }
     }
     
