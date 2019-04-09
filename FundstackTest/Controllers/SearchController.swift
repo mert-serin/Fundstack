@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 typealias FetchSearchResultCompletionBlock = (_ success: Bool, _ result: [SearchResult]?, _ error: NSError?) -> Void
 
@@ -20,5 +21,15 @@ extension SearchControllerProtocol {
 
 
 class SearchController: SearchControllerProtocol {
+    private static let entityName = "SearchResult"
     
+    private let persistentContainer: NSPersistentContainer
+    
+    init(persistentContainer: NSPersistentContainer) {
+        self.persistentContainer = persistentContainer
+    }
+    
+    func fetchItems(for query: String, _ completionBlock: @escaping FetchSearchResultCompletionBlock) {
+        
+    }
 }
