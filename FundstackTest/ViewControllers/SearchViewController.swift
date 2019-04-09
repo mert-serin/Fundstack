@@ -12,11 +12,16 @@ import CoreData
 class SearchViewController: UIViewController {
     
     //MARK: Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Private Variables
     private var searchController: SearchControllerProtocol!
     private var searchedResultCellIdentifier = "SearchedResultCell"
-    
+    private var searchedItems: [SearchResult] = []{
+        didSet{
+            collectionView.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +35,7 @@ class SearchViewController: UIViewController {
         
         searchController.fetchItems(for: searchedText) { (isSuccess, result, error) in
             if isSuccess{
-                print(result)
+                self.searchedItems = result ?? []
             }else{
                 
             }
@@ -49,7 +54,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchedResultCellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchedResultCellIdentifier, for: indexPath) as! SearchedResultCell
+        let model = searchedItems[indexPath.row]
         return cell
     }
     
@@ -58,6 +64,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return searchedItems.count
     }
 }

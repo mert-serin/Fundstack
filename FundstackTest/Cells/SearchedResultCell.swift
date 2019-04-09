@@ -12,5 +12,13 @@ class SearchedResultCell: UICollectionViewCell {
     
     @IBOutlet private weak var companyNameLabel: UILabel!
     
+    var searchedResult: SearchResult!{
+        didSet{
+            companyNameLabel.text = searchedResult.name ?? "-"
+        }
+    }
     
+    override func prepareForReuse() {
+        companyNameLabel.text = nil
+    }
 }
