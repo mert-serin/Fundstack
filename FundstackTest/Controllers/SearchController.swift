@@ -75,7 +75,7 @@ private extension SearchController {
     }
     
     func loadItemsFromAPI(for query: String, completion: @escaping FetchSearchResultCompletionBlock) {
-        let urlString = String(format: "https://autocomplete.clearbit.com/v1/companies/suggest?query=test")
+        let urlString = String(format: "https://autocomplete.clearbit.com/v1/companies/suggest?query=\(query)")
         guard let url = URL(string: urlString) else {
             completion(false, nil, nil)
             return

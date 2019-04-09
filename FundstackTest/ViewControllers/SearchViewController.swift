@@ -11,13 +11,23 @@ import CoreData
 
 class SearchViewController: UIViewController {
     
+    //MARK: Outlets
+    
     //MARK: Private Variables
     private var searchController: SearchControllerProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchController.fetchItems(for: "") { (isSuccess, result, error) in
+        
+    }
+
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        guard let searchedText = sender.text, searchedText != "" else{
+            return
+        }
+        
+        searchController.fetchItems(for: searchedText) { (isSuccess, result, error) in
             if isSuccess{
                 print(result)
             }else{

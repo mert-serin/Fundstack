@@ -17,13 +17,32 @@
                     <view key="view" contentMode="scaleToFill" id="4vr-VY-8JQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Company Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUL-Bw-gIG">
+                                <rect key="frame" x="16" y="49" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ifv-jv-JWd"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartQuotesType="no"/>
+                                <connections>
+                                    <action selector="textFieldEditingChanged:" destination="uBo-G7-c1U" eventType="editingChanged" id="cBv-dr-xaE"/>
+                                </connections>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e0I-Ul-WEh" firstAttribute="trailing" secondItem="bUL-Bw-gIG" secondAttribute="trailing" constant="16" id="4tO-YI-w25"/>
+                            <constraint firstItem="bUL-Bw-gIG" firstAttribute="top" secondItem="e0I-Ul-WEh" secondAttribute="top" constant="29" id="FeZ-wb-xBp"/>
+                            <constraint firstItem="bUL-Bw-gIG" firstAttribute="leading" secondItem="e0I-Ul-WEh" secondAttribute="leading" constant="16" id="a3z-Mz-dI7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="e0I-Ul-WEh"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh3-yK-7Gj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-162" y="43"/>
+            <point key="canvasLocation" x="-162.40000000000001" y="42.728635682158924"/>
         </scene>
     </scenes>
 </document>
