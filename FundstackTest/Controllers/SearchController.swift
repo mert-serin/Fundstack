@@ -30,6 +30,22 @@ class SearchController: SearchControllerProtocol {
     }
     
     func fetchItems(for query: String, _ completionBlock: @escaping FetchSearchResultCompletionBlock) {
-        
+        loadItems(for: query, completion: completionBlock)
+    }
+}
+
+private extension SearchController {
+    
+    func loadItems(for query: String, completion: @escaping FetchSearchResultCompletionBlock) {
+        let urlString = String(format: "https://autocomplete.clearbit.com/v1/companies/suggest?query=test")
+        guard let url = URL(string: urlString) else {
+            completion(false, nil, nil)
+            return
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { (data, response, error) in
+            print(response)
+        }
+        task.resume()
     }
 }
