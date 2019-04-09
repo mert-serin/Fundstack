@@ -107,11 +107,41 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="0a5-ot-iIL" id="Qqh-Ub-xw3"/>
+                        <segue destination="MZL-fg-cis" kind="show" identifier="SearchResultDetailSegue" id="Lwp-J7-fnb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lh3-yK-7Gj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-73" y="-18"/>
+        </scene>
+        <!--Search Result Detail View Controller-->
+        <scene sceneID="sQu-Uw-1G4">
+            <objects>
+                <viewController id="MZL-fg-cis" customClass="SearchResultDetailViewController" customModule="FundstackTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eRW-mt-mnJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d7Z-Al-ghu">
+                                <rect key="frame" x="20" y="40" width="335" height="607"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="d7Z-Al-ghu" firstAttribute="top" secondItem="RjE-Yg-Y4y" secondAttribute="top" constant="20" id="1MP-JG-335"/>
+                            <constraint firstItem="RjE-Yg-Y4y" firstAttribute="bottom" secondItem="d7Z-Al-ghu" secondAttribute="bottom" constant="20" id="9IY-wz-BAE"/>
+                            <constraint firstItem="RjE-Yg-Y4y" firstAttribute="trailing" secondItem="d7Z-Al-ghu" secondAttribute="trailing" constant="20" id="tlm-NN-264"/>
+                            <constraint firstItem="d7Z-Al-ghu" firstAttribute="leading" secondItem="RjE-Yg-Y4y" secondAttribute="leading" constant="20" id="uns-lU-dUH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RjE-Yg-Y4y"/>
+                    </view>
+                    <connections>
+                        <outlet property="companyLogoImageView" destination="d7Z-Al-ghu" id="pUb-jR-29e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x6V-Zf-Qhv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="-18"/>
         </scene>
     </scenes>
 </document>
