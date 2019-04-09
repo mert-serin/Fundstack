@@ -38,9 +38,18 @@ private extension SearchController {
     
     func parse(for query:String, _ jsonData: Data) -> (results: [SearchResult]?, isSuccess: Bool) {
         do {
+            guard let codingUserInfoKeyManagedObjectContext = CodingUserInfoKey.managedObjectContext else {
+                fatalError("Failed to retrieve managed object conte xt")
+            }
+            // Parse JSON data
+            let managedObjectContext = persistentContainer.viewContext
             let decoder = JSONDecoder()
+            decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
             let users = try decoder.decode([SearchResult].self, from: jsonData)
-            print(users)
+            for user in users{
+                user.query = query
+            }
+            try managedObjectContext.save()
             return (users, true)
         } catch let error {
             print(error)
