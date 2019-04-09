@@ -15,7 +15,8 @@ class SearchViewController: UIViewController {
     
     //MARK: Private Variables
     private var searchController: SearchControllerProtocol!
-
+    private var searchedResultCellIdentifier = "SearchedResultCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,4 +44,20 @@ class SearchViewController: UIViewController {
         return searchViewController
     }
 
+}
+
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: searchedResultCellIdentifier, for: indexPath)
+        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
 }
