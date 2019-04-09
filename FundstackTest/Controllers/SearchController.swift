@@ -36,6 +36,18 @@ class SearchController: SearchControllerProtocol {
 
 private extension SearchController {
     
+    func parse(for query:String, _ jsonData: Data) -> (results: [SearchResult]?, isSuccess: Bool) {
+        do {
+            let decoder = JSONDecoder()
+            let users = try decoder.decode([SearchResult].self, from: jsonData)
+            print(users)
+            return (users, true)
+        } catch let error {
+            print(error)
+            return (nil, false)
+        }
+    }
+    
     func loadItemsFromAPI(for query: String, completion: @escaping FetchSearchResultCompletionBlock) {
         let urlString = String(format: "https://autocomplete.clearbit.com/v1/companies/suggest?query=test")
         guard let url = URL(string: urlString) else {
@@ -43,8 +55,25 @@ private extension SearchController {
             return
         }
         let session = URLSession.shared
-        let task = session.dataTask(with: url) { (data, response, error) in
-            print(response)
+        let task = session.dataTask(with: url) { [weak self] (data, response, error) in
+            guard let strongSelf = self else { return }
+            guard let jsonData = data, error == nil else {
+                DispatchQueue.main.async {
+                    completion(false, nil, error as NSError?)
+                }
+                return
+            }
+            
+            let addedModels = strongSelf.parse(for: query, jsonData)
+            if addedModels.isSuccess {
+                DispatchQueue.main.async {
+                    completion(true, addedModels.results, nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(false, nil, NSError.createError(0, description: "JSON parsing error"))
+                }
+            }
         }
         task.resume()
     }
