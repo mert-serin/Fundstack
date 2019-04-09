@@ -88,6 +88,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
+    private func instantiateMainViewController() {
+        let searchViewController = SearchViewController.create(persistentContainer: persistentContainer)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = UINavigationController(rootViewController: searchViewController)
+        self.window?.makeKeyAndVisible()
+    }
 }
 

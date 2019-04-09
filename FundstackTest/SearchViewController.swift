@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController {
+    
+    public static func create(persistentContainer: NSPersistentContainer) -> SearchViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        return searchViewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
