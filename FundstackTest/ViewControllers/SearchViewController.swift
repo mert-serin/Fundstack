@@ -23,6 +23,10 @@ class SearchViewController: UIViewController {
         }
     }
     
+    //MARK: Constraints
+    
+    @IBOutlet weak var searchedResultHeightConstraints: NSLayoutConstraint!
+    
     //MARK: Segues
     private var searchResultDetailSegue = "SearchResultDetailSegue"
     

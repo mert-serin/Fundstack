@@ -18,8 +18,21 @@ class SearchResultDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let imageURL = URL(string: searchedResult.logo!){
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: imageURL) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                DispatchQueue.main.async {
+                    self.companyLogoImageView.image = UIImage(data: data!)
+                }
+            }
+        }
+        
+        
+    }
+    
+    
 
 }
