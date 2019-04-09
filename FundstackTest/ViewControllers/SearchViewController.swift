@@ -19,12 +19,34 @@ class SearchViewController: UIViewController {
     private var searchedResultCellIdentifier = "SearchedResultCell"
     private var searchedItems: [SearchResult] = []{
         didSet{
+            if searchedItems.count >= 0 && searchedItems.count <= 4{
+                searchedResultHeightConstraints.constant = CGFloat(searchedItems.count) * 35
+            }else{
+                searchedResultHeightConstraints.constant = 4 * 35
+            }
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
             collectionView.reloadData()
+        }
+    }
+    private var isSearchActive: Bool = false{
+        didSet{
+            var backgroundColor:UIColor!
+            if isSearchActive{
+                backgroundColor = UIColor.lightGray
+            }else{
+                searchedItems = []
+                backgroundColor = UIColor.white
+            }
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
+                self.view.backgroundColor = backgroundColor
+            }, completion: nil)
         }
     }
     
     //MARK: Constraints
-    
     @IBOutlet weak var searchedResultHeightConstraints: NSLayoutConstraint!
     
     //MARK: Segues
