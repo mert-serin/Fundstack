@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -104,5 +104,13 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchedItems.count
+    }
+}
+
+extension SearchViewController:UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }

@@ -18,6 +18,7 @@
 		61526897225D162400C5E90F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61526896225D162400C5E90F /* SearchController.swift */; };
 		6152689A225D241E00C5E90F /* SearchedResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61526899225D241E00C5E90F /* SearchedResultCell.swift */; };
 		6152689C225D271B00C5E90F /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152689B225D271B00C5E90F /* SearchResultDetailViewController.swift */; };
+		6152689E225E212B00C5E90F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152689D225E212B00C5E90F /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		61526896225D162400C5E90F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		61526899225D241E00C5E90F /* SearchedResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedResultCell.swift; sourceTree = "<group>"; };
 		6152689B225D271B00C5E90F /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
+		6152689D225E212B00C5E90F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				6152688A225D11DF00C5E90F /* SearchViewController.swift */,
 				6152689B225D271B00C5E90F /* SearchResultDetailViewController.swift */,
+				6152689D225E212B00C5E90F /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				6152689A225D241E00C5E90F /* SearchedResultCell.swift in Sources */,
 				61526897225D162400C5E90F /* SearchController.swift in Sources */,
 				6152688B225D11DF00C5E90F /* SearchViewController.swift in Sources */,
+				6152689E225E212B00C5E90F /* BaseViewController.swift in Sources */,
 				61526876225D103500C5E90F /* AppDelegate.swift in Sources */,
 				6152688E225D13BE00C5E90F /* SearchResult.swift in Sources */,
 				6152687E225D103500C5E90F /* FundstackTest.xcdatamodeld in Sources */,

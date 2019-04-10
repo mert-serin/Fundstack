@@ -28,6 +28,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartQuotesType="no"/>
                                 <connections>
                                     <action selector="textFieldEditingChanged:" destination="uBo-G7-c1U" eventType="editingChanged" id="cBv-dr-xaE"/>
+                                    <outlet property="delegate" destination="uBo-G7-c1U" id="DyF-ng-DII"/>
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGD-8Z-feH">
