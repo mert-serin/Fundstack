@@ -15,7 +15,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: Private Variables
-    private var searchController: SearchControllerProtocol!
+    private var searchController: SearchControllerProtocol! = SearchController()
     private var searchedResultCellIdentifier = "SearchedResultCell"
     private var searchedItems: [SearchResult] = []{
         didSet{
@@ -67,8 +67,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-    
-    
 
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         guard let searchedText = sender.text, searchedText != "" else{
@@ -86,14 +84,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-    
-    public static func create(persistentContainer: NSPersistentContainer) -> SearchViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let searchViewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        searchViewController.searchController = SearchController(persistentContainer: persistentContainer)
-        return searchViewController
-    }
-
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource{
