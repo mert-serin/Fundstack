@@ -23,12 +23,6 @@ extension SearchControllerProtocol {
 class SearchController: SearchControllerProtocol {
     private static let entityName = "SearchResult"
     
-    private var persistentContainer: NSPersistentContainer!{
-        get{
-            return AppDelegate.persistentContainer
-        }
-    }
-    
     func fetchItems(for query: String, _ completionBlock: @escaping FetchSearchResultCompletionBlock) {
         fetchFromStorageOrAPI(for: query, completion: completionBlock)
     }
@@ -42,7 +36,7 @@ private extension SearchController {
                 fatalError("Failed to retrieve managed object conte xt")
             }
             // Parse JSON data
-            let managedObjectContext = persistentContainer.viewContext
+            let managedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
             let decoder = JSONDecoder()
             decoder.userInfo[codingUserInfoKeyManagedObjectContext] = managedObjectContext
             let users = try decoder.decode([SearchResult].self, from: jsonData)
@@ -58,7 +52,7 @@ private extension SearchController {
     }
     
     func fetchFromStorageOrAPI(for query: String, completion: @escaping FetchSearchResultCompletionBlock){
-        let managedObjectContext = persistentContainer.viewContext
+        let managedObjectContext = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<SearchResult>(entityName: SearchController.entityName)
         let predicate = NSPredicate(format: "query == %@", query)
         fetchRequest.predicate = predicate
